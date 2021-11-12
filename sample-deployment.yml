@@ -1,0 +1,23 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  labels:
+    app: busybox
+  name: busybox
+  namespace: argo-cd
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: busybox
+  strategy: {}
+  template:
+    metadata:
+      labels:
+        app: busybox
+    spec:
+      containers:
+      - image: alpine:latest
+        args: ['sh', '-c', 'sleep 350000']  
+        name: busybox
+        resources: {}
